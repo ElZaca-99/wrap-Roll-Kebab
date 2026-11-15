@@ -1,0 +1,465 @@
+/* =========================================
+ *  1. VARIABLES Y CONFIGURACIÓN GLOBAL
+ *  ========================================= */
+:root {
+  --ink: #17110e;
+  --red: #e2231a;
+  --sun: #ffb703;
+  --paper: #fff4e2;
+  --line: #e9d8bb;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* =========================================
+ *  2. RESET Y ESTILOS BASE
+ *  ========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 17px/1.55 "DM Sans", system-ui, sans-serif;
+}
+
+/* =========================================
+ *  3. TIPOGRAFÍA Y ENLACES
+ *  ========================================= */
+h1, h2, h3 {
+  font-family: "Bowlby One", Impact, sans-serif;
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+/* =========================================
+ *  4. UTILIDADES DE DISEÑO (LAYOUT)
+ *  ========================================= */
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 72px 0;
+}
+
+/* =========================================
+ *  5. COMPONENTES: BOTONES
+ *  ========================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.btn.red {
+  background: var(--red);
+  color: #fff;
+}
+
+.btn.sun {
+  background: var(--sun);
+  color: var(--ink);
+}
+
+.btn.ghost {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* =========================================
+ *  6. COMPONENTES: NAVEGACIÓN
+ *  ========================================= */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--ink);
+  color: #fff;
+}
+
+nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+nav b {
+  font-family: "Bowlby One", Impact, sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: .5px;
+}
+
+nav b i {
+  font-style: normal;
+  color: var(--sun);
+}
+
+nav .links {
+  display: flex;
+  gap: 22px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+nav .links a {
+  text-decoration: none;
+}
+
+nav .call {
+  padding: 9px 16px;
+  font-size: 15px;
+}
+
+/* =========================================
+ *  7. COMPONENTES: HERO (ENCABEZADO PRINCIPAL)
+ *  ========================================= */
+.hero {
+  position: relative;
+  background:
+  radial-gradient(circle at 88% 15%, rgba(226, 35, 26, .6), transparent 55%),
+  radial-gradient(circle at 5% 95%, rgba(255, 183, 3, .28), transparent 50%),
+  var(--ink);
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero .wrap {
+  position: relative;
+  z-index: 2;
+  padding-top: 110px;
+  padding-bottom: 56px;
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero p.kick {
+  background: var(--sun);
+  color: var(--ink);
+  align-self: flex-start;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transform: rotate(-2deg);
+  margin: 0 0 18px;
+}
+
+.hero h1 {
+  font-size: clamp(46px, 11vw, 118px);
+  text-shadow: 0 4px 0 var(--red);
+}
+
+.hero h1 span {
+  display: block;
+  font-size: .45em;
+  color: var(--sun);
+  text-shadow: none;
+  margin-bottom: 6px;
+}
+
+.hero .lead {
+  max-width: 520px;
+  font-size: 19px;
+  margin: 20px 0 26px;
+}
+
+.hero .cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* =========================================
+ *  8. COMPONENTES: BARRA INFORMATIVA Y MENÚ
+ *  ========================================= */
+.strip {
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+}
+
+.strip .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+h2 {
+  font-size: clamp(34px, 6vw, 58px);
+  margin-bottom: 8px;
+}
+
+.sub {
+  max-width: 560px;
+  color: #5b4b3f;
+  margin: 0 0 30px;
+}
+
+/* Pestañas del menú */
+.tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0 14px;
+  margin-bottom: 10px;
+  scrollbar-width: thin;
+}
+
+.tabs button {
+  flex: none;
+  font: 700 15px "DM Sans", sans-serif;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.tabs button[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--sun);
+}
+
+/* Rejilla y tarjetas del menú */
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.card {
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.card h3 {
+  font-size: 24px;
+  color: var(--red);
+  margin-bottom: 4px;
+}
+
+.card .d {
+  font-size: 14.5px;
+  color: #5b4b3f;
+  margin: 0 0 12px;
+}
+
+.card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-top: 1px dashed var(--line);
+  font-weight: 500;
+}
+
+.card li b {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.card li small {
+  display: block;
+  font-weight: 400;
+  color: #5b4b3f;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+
+.note {
+  margin-top: 22px;
+  font-size: 15px;
+  color: #5b4b3f;
+}
+
+/* =========================================
+ *  9. COMPONENTES: SECCIÓN DE CONTACTO (DARK)
+ *  ========================================= */
+.dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+.dark .sub {
+  color: #e2d3bd;
+}
+
+.info {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.info div {
+  border: 2px solid var(--sun);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.info h3 {
+  font-size: 20px;
+  color: var(--sun);
+  margin-bottom: 10px;
+}
+
+.info p {
+  margin: 0 0 14px;
+}
+
+.info .big {
+  font-family: "Bowlby One", Impact, sans-serif;
+  font-size: 30px;
+  line-height: 1.1;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Horario de apertura */
+.hours {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 0;
+  border-top: 1px dashed rgba(255, 255, 255, .2);
+  font-size: 15px;
+}
+
+.hours li.today {
+  color: var(--sun);
+  font-weight: 700;
+}
+
+.hours b {
+  font-weight: 500;
+  text-align: right;
+}
+
+.hours li.today b {
+  font-weight: 700;
+}
+
+.info .open {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0;
+}
+
+.info .open.si {
+  background: #2e9e4f;
+  color: #fff;
+}
+
+.info .open.no {
+  background: var(--red);
+  color: #fff;
+}
+
+/* =========================================
+ *  10. FOOTER Y BOTÓN FLOTANTE (FAB)
+ *  ========================================= */
+footer {
+  background: #0d0907;
+  color: #bfae98;
+  padding: 26px 0 90px;
+  font-size: 14px;
+}
+
+.fab {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 30;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+}
+
+/* =========================================
+ *  11. MEDIA QUERIES (DISEÑO RESPONSIVE)
+ *  ========================================= */
+/* Ajustes para móviles (menor a 640px) */
+@media (max-width: 640px) {
+  nav .links {
+    display: none;
+  }
+}
+
+/* Ajustes para escritorio (mayor a 900px) */
+@media (min-width: 900px) {
+  .fab {
+    display: none;
+  }
+
+  footer {
+    padding-bottom: 26px;
+  }
+}
+
+/* =========================================
+ *  12. ANIMACIONES Y ACCESIBILIDAD
+ *  ========================================= */
+@media (prefers-reduced-motion: no-preference) {
+  .hero p.kick {
+    animation: pop .6s .1s both;
+  }
+
+  @keyframes pop {
+    from {
+      transform: rotate(-2deg) scale(.6);
+      opacity: 0;
+    }
+  }
+}
